@@ -6,34 +6,7 @@
   <link href="styles.css" media="screen" rel="stylesheet"/>
 </head>
 <body>
-  <h3>Movies</h3>
-
-  <table>
-    <thead>
-      <tr>
-        <th>Title</th>
-      </tr>
-    </thead>
-
-    <tbody>
-
-      <% @titles.each do |k,v| %>
-      <tr>
-        <td>
-          <a href="<%= url("/movies/#{k}") %>">
-            <%= "#{v}" %>
-          </a>
-        </td>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
+  <h3><a href="/movies">Movies</a><h3>
 
 </body>
 </html>
-
-<!-- @title_ids.each do |x|
-  x[index][value]
-  index += 1
-
-end -->

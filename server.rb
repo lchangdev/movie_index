@@ -22,11 +22,15 @@ def load_titles(csv)
   Hash[sorted_movies]
 end
 
+get '/' do
+  erb :index
+end
+
 get '/movies' do
   @movies = load_data('movies.csv')
   @titles = load_titles('movies.csv')
 
-  erb :index
+  erb :movies
 end
 
 get '/movies/:movie_id' do
