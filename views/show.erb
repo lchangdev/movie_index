@@ -6,7 +6,7 @@
   <link href="styles.css" media="screen" rel="stylesheet"/>
 </head>
 <body>
-  <h3>Movies</h3>
+  <h3><%= @details[:title] %></h3>
 
   <table>
     <thead>
@@ -16,11 +16,10 @@
     </thead>
 
     <tbody>
-      <% @titles.each do |movie| %>
+
       <tr>
-        <td><%= movie %></td>
+        <td><%= @details[:title] %></a></td>
       </tr>
-      <% end %>
     </tbody>
   </table>
 

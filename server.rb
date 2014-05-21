@@ -17,13 +17,21 @@ def load_titles(csv)
   CSV.foreach(csv, headers: true, header_converters: :symbol) do |row|
     title_data << row[:title]
   end
-  binding.pry
   title_data.sort
 end
 
 get '/movies' do
   @movies = load_data('movies.csv')
-  @titles = load_data('movies.csv')
+  @titles = load_titles('movies.csv')
 
   erb :index
+end
+
+get '/movies/:id' do
+  @movies = load_data('movies.csv')
+  @details = @movies.find do |movieid|
+    movieid[:id] == params[:id]
+  end
+
+  erb :show
 end
