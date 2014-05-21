@@ -16,9 +16,14 @@
     </thead>
 
     <tbody>
-      <% @titles.each do |movie| %>
+
+      <% @titles.each do |k,v| %>
       <tr>
-        <td><%= movie %></td>
+        <td>
+          <a href="<%= url("/movies/#{k}") %>">
+            <%= "#{v}" %>
+          </a>
+        </td>
       </tr>
       <% end %>
     </tbody>
@@ -26,3 +31,9 @@
 
 </body>
 </html>
+
+<!-- @title_ids.each do |x|
+  x[index][value]
+  index += 1
+
+end -->

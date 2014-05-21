@@ -12,12 +12,14 @@ def load_data(csv)
 end
 
 def load_titles(csv)
-  title_data = []
 
+  id_title_hash = {}
   CSV.foreach(csv, headers: true, header_converters: :symbol) do |row|
-    title_data << row[:title]
+    id_title_hash[row[:id]] = row[:title]
+
   end
-  title_data.sort
+  sorted_movies = id_title_hash.sort_by {|k,v| v}
+  Hash[sorted_movies]
 end
 
 get '/movies' do
@@ -27,10 +29,10 @@ get '/movies' do
   erb :index
 end
 
-get '/movies/:id' do
+get '/movies/:movie_id' do
   @movies = load_data('movies.csv')
   @details = @movies.find do |movieid|
-    movieid[:id] == params[:id]
+    movieid[:id] == params[:movie_id]
   end
 
   erb :show
